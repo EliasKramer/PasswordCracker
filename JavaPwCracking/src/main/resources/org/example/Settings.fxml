@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.SettingsController">
+   <top>
+      <Label text="Settings" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <VBox prefHeight="310.0" prefWidth="317.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+         <children>
+            <VBox prefHeight="51.0" prefWidth="100.0">
+               <children>
+                  <Label text="Hash Methods">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="HashMethodsFx" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="355.0">
+               <children>
+                  <Label text="Brute Force Settings">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="KnowsLengthFx" mnemonicParsing="false" onAction="#updateKnowsLength" text="Knows Length of Plain Text" />
+                  <CheckBox fx:id="KnowsCharsFx" mnemonicParsing="false" onAction="#updateKnowsChars" text="Knows what Type of Characters are used in Plain Text" />
+                  <Label text="Max length of Password">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="MaxLengthOfPw" blockIncrement="1.0" max="16.0" min="1.0" onDragDetected="#updateMaxLengthOfPw" onMouseDragged="#updateMaxLengthOfPw" prefHeight="14.0" prefWidth="272.0" value="1.0">
+                     <VBox.margin>
+                        <Insets right="100.0" />
+                     </VBox.margin>
+                  </Slider>
+                  <Label fx:id="CurrPasswordLengthFx" text="Curr Length" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
