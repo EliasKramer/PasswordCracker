@@ -42,12 +42,15 @@ public class MainAppController {
 
     private SimpleDateFormat _formatter = new SimpleDateFormat("HH:mm:ss");
     private int _maxLogs = 3;
+
+    private int _guessID = 0;
     public MainAppController() {
         _commonPasswords = new TextFileChecker("./passwordlist/rockyou.txt", "Common Password List",this);
         _dictionary = new TextFileChecker("./passwordlist/englishWords.txt", "English Words List",this);
     }
     @FXML
     public void OnStartClick() {
+        _guessID++;
         addLog("Started Cracking");
         OutputFx.setText("");
         HashedOutputFx.setText("");
@@ -66,10 +69,10 @@ public class MainAppController {
         _hashedInput = getHash(_input);
         HashedInputFx.setText(_hashedInput);
 
-        _commonPasswords.checkAllEntries(this);
-        _dictionary.checkAllEntries(this);
+        _commonPasswords.checkAllEntries(this,_guessID);
+        _dictionary.checkAllEntries(this,_guessID);
 
-        bruteForce();
+        bruteForce(_guessID);
     }
 
     @FXML
@@ -96,7 +99,7 @@ public class MainAppController {
         stage.show();
     }
 
-    private void bruteForce() {
+    private void bruteForce(int id) {
         SettingsModel model = SettingsModel.getInstance();
         PasswordAnalyzer analyzer = new PasswordAnalyzer(_input);
         char[] possibleChars = model.getKnowsChars() ?
@@ -106,6 +109,7 @@ public class MainAppController {
                 _input.length() :
                 model.getMaxLengthOfPw();
         BruteForceManager m = new BruteForceManager(this,
+                id,
                 possibleChars,
                 lengthOfPw
         );
@@ -126,9 +130,13 @@ public class MainAppController {
     }
 
     ///returns true if it should continue guessing
-    public boolean guessPlain(String guess, String method) {
+    public boolean guessPlain(String guess, int id, String method) {
         if (_foundRightAnswer) {
             return false;
+        }
+        if (id != _guessID) {
+            return false;
+            //the id is not the current one another password is currently beeing guessed
         }
         if (_hashedInput.equals(getHash(guess))) {
             processCorrectGuess(guess, _hashedInput, method);

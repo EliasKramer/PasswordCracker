@@ -42,7 +42,7 @@ public class TextFileChecker {
         t.start();
     }
 
-    public void checkAllEntries(MainAppController callBackClass) {
+    public void checkAllEntries(MainAppController callBackClass, int id) {
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -54,7 +54,7 @@ public class TextFileChecker {
                     }
                 }
                 for (String curr : _lines) {
-                    if(!callBackClass.guessPlain(curr, _methodName))
+                    if(!callBackClass.guessPlain(curr, id, _methodName))
                     {
                         return;
                     }

@@ -24,8 +24,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="TimeTookFx" alignment="CENTER" contentDisplay="CENTER" text="Time Took" GridPane.rowIndex="1" />
-                  <Label fx:id="MethodFx" prefHeight="18.0" prefWidth="337.0" text="Method" />
+                  <Label fx:id="TimeTookFx" alignment="CENTER" contentDisplay="CENTER" GridPane.rowIndex="1" />
+                  <Label fx:id="MethodFx" prefHeight="18.0" prefWidth="337.0" />
                   <Button fx:id="CreditsBtnFx" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#OnCreditsClick" text="Credits" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button fx:id="SettingsBtnFx" mnemonicParsing="false" onAction="#OnSettingsClick" text="Settings" GridPane.columnIndex="1" />
                </children>
