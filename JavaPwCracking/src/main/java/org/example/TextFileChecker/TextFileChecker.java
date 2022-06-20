@@ -12,15 +12,17 @@ public class TextFileChecker {
     private String _methodName;
     private boolean _doneLoading = false;
     private String[] _lines;
+    private MainAppController _controller;
 
-    public TextFileChecker(String path, String methodName) {
+    public TextFileChecker(String path, String methodName, MainAppController givenController) {
         this._methodName = methodName;
+        this._controller = givenController;
         parallelLoad(path);
     }
 
     private void parallelLoad(String path) {
         Thread t = new Thread(() -> {
-            System.out.println(_methodName + " loading start");
+            _controller.addLog("Loading file: " + _methodName);
             LinkedList<String> temp = new LinkedList<>();
             try (BufferedReader br = new BufferedReader(new FileReader(path))) {
                 String line;
@@ -32,7 +34,7 @@ public class TextFileChecker {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(_methodName + " loading done");
+            _controller.addLog("Done loading file: " + _methodName);
             _lines = new String[temp.size()];
             _lines = temp.toArray(_lines);
             _doneLoading = true;
@@ -57,6 +59,7 @@ public class TextFileChecker {
                         return;
                     }
                 }
+                _controller.addLog("Not found with " + _methodName);
             }
         };
         Thread t = new Thread(r);

@@ -45,7 +45,8 @@ public class BruteForceManager {
                     AddingToArray[indexTillAdding] = 0;
                     indexTillAdding++;
                     if (indexTillAdding == lengthOfGuessingString) {
-                        System.out.println("The String is longer than " + lengthOfGuessingString + " characters");
+                        _callBackClass.addLog("Brute Force: Password is longer than "+
+                                lengthOfGuessingString);
                         return;
                     } else {
                         AddingToArray[indexTillAdding]++;

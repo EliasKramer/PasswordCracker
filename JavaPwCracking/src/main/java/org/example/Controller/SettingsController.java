@@ -41,17 +41,14 @@ public class SettingsController {
     }
     @FXML
     public void updateKnowsLength() {
-        System.out.println("updateKnowsLength");
         _model.setKnowsLength(KnowsLengthFx.isSelected());
     }
     @FXML
     public void updateKnowsChars() {
-        System.out.println("updateKnowsChars");
         _model.setKnowsChars(KnowsCharsFx.isSelected());
     }
     @FXML
     public void updateMaxLengthOfPw() {
-        System.out.println("updateMaxLengthOfPw "+MaxLengthOfPw.getValue());
         _model.setMaxLengthOfPw((int) MaxLengthOfPw.getValue());
         CurrPasswordLengthFx.setText(String.valueOf(_model.getMaxLengthOfPw()));
     }

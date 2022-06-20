@@ -11,7 +11,7 @@ public class SettingsModel {
     private int _maxLengthOfPw;
 
     private SettingsModel() {
-        _hashMethods = new String[]{"SHA-256", "SHA-512"};//, "SHA-384", "SHA-224", "SHA-1", "MD5"
+        _hashMethods = new String[]{"SHA-256", "SHA-512", "SHA-384", "SHA-224", "SHA-1", "MD5"};
         _currHashMethod = _hashMethods[0];
         _knowsChars = false;
         _knowsLength = false;

@@ -22,7 +22,6 @@
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label fx:id="TimeTookFx" alignment="CENTER" contentDisplay="CENTER" text="Time Took" GridPane.rowIndex="1" />
@@ -82,10 +81,26 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label contentDisplay="CENTER" text="Updates">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="Logs" prefHeight="96.0" prefWidth="280.0" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </VBox>
                </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
             </GridPane>
          </center>
       </BorderPane>
