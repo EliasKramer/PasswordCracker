@@ -4,6 +4,8 @@ import org.example.Controller.MainAppController;
 import org.example.Model.SettingsModel;
 
 import javax.swing.*;
+import java.time.Duration;
+import java.time.Instant;
 
 public class BruteForceManager {
     private MainAppController _callBackClass;
@@ -34,6 +36,7 @@ public class BruteForceManager {
         final int lengthOfGuessingString = length;
 
         Thread t = new Thread(() -> {
+            Instant start = Instant.now();
             int diff = _possibleChars.length - 1;
             int[] AddingToArray = new int[lengthOfGuessingString];
             boolean shallContinue = true;
@@ -64,7 +67,22 @@ public class BruteForceManager {
                         (numberOfGuesses % 10000000 == 0) &&
                         percent != lastPrintedPercent)
                 {
-                    _callBackClass.addLog("Brute Force: " + length + " to " + percent + "% done");
+                    Instant now = Instant.now();
+                    Duration duration = Duration.between(start, now);
+                    String timeRemaining = "";
+                    if(percent != 100)
+                    {
+                        int multiplier = (int)((100d/(double)percent));
+                        if((multiplier*duration.toSeconds()/60) >= 1)
+                        {
+                            timeRemaining = "(remaining: " + (multiplier*duration.toSeconds()) + "min)";
+                        }
+                        else
+                        {
+                            timeRemaining = "(remaining: " + (multiplier*duration.toSeconds()) + "sec)";
+                        }
+                    }
+                    _callBackClass.addLog("Brute Force: " + length + " to " + percent + "% done "+timeRemaining);
                     lastPrintedPercent = percent;
                 }
             } while (shallContinue);

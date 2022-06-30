@@ -54,6 +54,8 @@ public class MainAppController {
         addLog("Started Cracking");
         OutputFx.setText("");
         HashedOutputFx.setText("");
+        MethodFx.setText("");
+        TimeTookFx.setText("");
 
         _input = InputFx.getText();
 

@@ -35,9 +35,6 @@ public class PasswordAnalyzer {
                 possibleChars.addAll(CharArea.getAllSpecialChars());
                 specialCharsExists = true;
             }
-            else{
-                break;
-            }
         }
 
         char[] retVal = new char[possibleChars.size()];
